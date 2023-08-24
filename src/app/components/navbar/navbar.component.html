@@ -1,0 +1,136 @@
+<nav class="bg-sky-700 border-gray-200 px-6 shadow-md">
+  <div class="flex flex-wrap justify-between items-center">
+    <div class="flex items-center">
+      <a routerLink="/">
+        <img loading="lazy" class="w-20 mr-8" src="/assets/images/logo/logo-gradient-white-trello.png" alt="logo" />
+      </a>
+      <div class="flex items-center">
+        <ul class="flex items-center space-x-8 text-sm font-medium">
+          <li>
+            <div class="  space-x-2 flex text-white  items-center">
+              <a>Workspaces</a>
+              <fa-icon [icon]="faAngleDown"></fa-icon>
+            </div>
+          </li>
+          <li>
+            <a class="block py-3 px-4 text-white">Recent</a>
+          </li>
+          <li>
+            <div class="space-x-2 flex text-white items-center">
+              <a>Starred</a>
+              <fa-icon [icon]="faAngleDown"></fa-icon>
+            </div>
+          </li>
+
+          <li>
+            <button type="button" class="flex rounded-full" type="button" (click)="isOpenTemplates = !isOpenTemplates"
+              cdkOverlayOrigin #menuTemplates="cdkOverlayOrigin">
+              <div class=" space-x-2 flex text-white items-center">
+                <span>Templates</span>
+                <fa-icon [icon]="faAngleDown"></fa-icon>
+              </div>
+            </button>
+          </li>
+          <li>
+            <app-btn>Create</app-btn>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex items-center">
+      <div class="space-x-3 flex">
+
+        <!-- button para notificaciones-->
+        <button class="text-white" type="button">
+          <fa-icon [icon]="faBell"></fa-icon>
+        </button>
+        <!-- button para ayuda-->
+        <button class="text-white" type="button">
+          <fa-icon [icon]="faInfoCicle"></fa-icon>
+        </button>
+
+        <!-- button para desplegar menu flotante-->
+        <button type="button" class="flex rounded-full" aria-expanded="false" type="button" (click)="isOpen = !isOpen"
+          cdkOverlayOrigin #menuOverlay="cdkOverlayOrigin">
+          <img class="w-8 h-8 rounded-full" src="https://api.lorem.space/image/face?w=400&h=400" alt="user photo" />
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- menu flotante de usuario-->
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="menuOverlay" [cdkConnectedOverlayOpen]="isOpen">
+  <div class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-gray-100 shadow">
+    <div class="py-3 px-4 flex justify-between">
+      <span class="block text-sm text-center text-gray-900">Account</span>
+      <button (click)="isOpen = !isOpen" class="block text-sm text-gray-900">
+        x
+      </button>
+    </div>
+    <div class="py-3 px-4 flex items-center space-x-4">
+      <img class="w-10 h-10 rounded-full" src="https://api.lorem.space/image/face?w=400&h=400" alt />
+      <div class="space-y-1">
+        <div>Gerardo Tax</div>
+        <div class="text-sm text-gray-500">tax@gmail.com</div>
+      </div>
+    </div>
+    <ul class="py-1">
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-400">Profile</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-400">Activity</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-400">Cards</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-400">Settings</a>
+      </li>
+    </ul>
+    <ul class="py-1">
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700">Log out</a>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+
+<!-- menu flotante de templates-->
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="menuTemplates" [cdkConnectedOverlayOpen]="isOpenTemplates">
+  <div class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-gray-100 shadow">
+    <div class="px-3">
+      <h5>Plantillas</h5>
+      <ul class="py-2">
+        <li>
+            <button type="button" >
+              <div class="flex text-sm hover:text-blue-500" >
+              <img class="w-8 h-8 rounded"  src="https://plus.unsplash.com/premium_photo-1682633117380-e1c55f70efd4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" alt="plantilla">
+              <span class="px-2 py-1">1-on-1 Meeting Agenda</span>
+               </div>
+            </button>
+        </li>
+        <li>
+          <div class="flex text-sm py-2" >
+            <img class="w-8 h-8 rounded"  src="https://images.unsplash.com/photo-1541598599844-19a0319b8846?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="plantilla">
+            <span class="px-2">1-on-1 Meeting Agenda</span>
+          </div>
+        </li>
+        <li>
+          <div class="flex text-sm">
+            <img class="w-8 h-8 rounded"  src="https://plus.unsplash.com/premium_photo-1682633117380-e1c55f70efd4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" alt="plantilla">
+            <span class="px-2">1-on-1 Meeting Agenda</span>
+          </div>
+        </li>
+        <li>
+          <div class="flex text-sm py-2" >
+            <img class="w-8 h-8 rounded"  src="https://images.unsplash.com/photo-1541598599844-19a0319b8846?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="plantilla">
+            <span class="px-2">1-on-1 Meeting Agenda</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
